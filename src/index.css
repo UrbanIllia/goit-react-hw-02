@@ -64,7 +64,7 @@ body {
     url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80");
   background-size: 110%;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -84,27 +84,23 @@ body {
 }
 .urban {
   position: absolute;
-  left: 10px;
-  top: 10px;
-  width: 100px;
+  left: 6px;
+  top: 6px;
+  width: 60px;
   height: auto;
 }
-.container {
-  max-width: 352px;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 736px;
+  .urban {
+    left: 8px;
+    top: 8px;
+    width: 80px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .container {
-    max-width: 1248px;
+  .urban {
+    left: 10px;
+    top: 10px;
+    width: 100px;
   }
 }
