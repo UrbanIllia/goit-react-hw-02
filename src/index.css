@@ -71,6 +71,7 @@ body {
   font-family: "Poppins", sans-serif;
   color: #fff;
   animation: backgroundZoom 5s infinite alternate;
+  overflow: visible;
 }
 
 @keyframes backgroundZoom {

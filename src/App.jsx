@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import css from "./App.module.css";
 import Description from "./components/Description/Description.jsx";
 import Feedback from "./components/Feedback/Feedback.jsx";
