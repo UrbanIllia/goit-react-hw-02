@@ -1,17 +1,41 @@
 .title {
-  font-size: 50px;
+  font-size: 30px;
   line-height: 1;
   letter-spacing: -0.04em;
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 15px;
   color: rgb(255, 147, 6);
+}
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 36px;
+    margin-bottom: 25px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .title {
+    font-size: 50px;
+    margin-bottom: 35px;
+  }
 }
 
 .text {
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.33;
   letter-spacing: -0.01em;
   text-align: center;
-
   margin-bottom: 10px;
+}
+@media screen and (min-width: 768px) {
+  .text {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .text {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
 }

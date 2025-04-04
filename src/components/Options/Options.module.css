@@ -1,13 +1,30 @@
 .options {
   display: flex;
-  gap: 15px;
+  flex-direction: column;
+  gap: 10px;
   justify-content: center;
-  margin: 30px 0;
+  align-items: center;
+  margin: 20px 0;
+}
+@media screen and (min-width: 768px) {
+  .options {
+    flex-direction: row;
+    gap: 15px;
+    margin: 20px 0;
+  }
 }
 
+@media screen and (min-width: 1280px) {
+  .options {
+    margin: 30px 0;
+    gap: 20px;
+  }
+}
 .options button {
-  padding: 12px 24px;
-  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
   font-weight: 600;
   border: none;
   border-radius: 8px;
@@ -15,9 +32,22 @@
   color: #fff;
   cursor: pointer;
   transition: transform 0.5s ease, box-shadow 0.5s ease;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  gap: 6px;
+  width: 110px;
+  height: 45px;
+}
+@media screen and (min-width: 768px) {
+  .options button {
+    font-size: 16px;
+    gap: 8px;
+    width: 120px;
+    height: 50px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .options button {
+  }
 }
 
 .options button:hover {
