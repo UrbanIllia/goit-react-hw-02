@@ -1,48 +1,24 @@
-// import PropTypes from "prop-types";
 import css from "./Options.module.css";
 
-const Options = ({ onClickFeedback, resetFeedback, resetButton }) => {
+const Options = ({ updateFeedback, resetFeedback, totalFeedback }) => {
   return (
-    <ul className={css.buttonList}>
-      <li>
-        <button
-          className={css.mainButton}
-          onClick={() => onClickFeedback("good")}
-        >
-          Good
+    <div className={css.options}>
+      <button className={css.good} onClick={() => updateFeedback("good")}>
+        Good
+      </button>
+      <button className={css.neutral} onClick={() => updateFeedback("neutral")}>
+        Neutral
+      </button>
+      <button className={css.bad} onClick={() => updateFeedback("bad")}>
+        Bad
+      </button>
+      {totalFeedback > 0 && (
+        <button onClick={resetFeedback} className={css.resetButton}>
+          Reset
         </button>
-      </li>
-      <li>
-        <button
-          className={css.mainButton}
-          onClick={() => onClickFeedback("neutral")}
-        >
-          Neutral
-        </button>
-      </li>
-      <li>
-        <button
-          className={css.mainButton}
-          onClick={() => onClickFeedback("bad")}
-        >
-          Bad
-        </button>
-      </li>
-      {resetFeedback >= 1 && (
-        <li>
-          <button className={css.mainButton} onClick={resetButton}>
-            Reset
-          </button>
-        </li>
       )}
-    </ul>
+    </div>
   );
 };
 
 export default Options;
-
-// Options.protoType = {
-//   onClickFeedback: PropTypes.func,
-//   resetFeedback: PropTypes.bool,
-//   resetButton: PropTypes.func,
-// };

@@ -1,28 +1,15 @@
-// import PropTypes from "prop-types";
 import css from "./Feedback.module.css";
 
-const Feedback = ({ feedbackObj, feedbackTotal, feedbackPositive }) => {
-  const { good, neutral, bad } = feedbackObj;
-
+const Feedback = ({ feedback, totalFeedback, positiveFeedback }) => {
   return (
-    <>
-      <div className={css.divContainer}>
-        <p className={css.feedbackParagraf}>❤️ Good: {good}</p>
-        <p className={css.feedbackParagraf}>😒 Neutral: {neutral}</p>
-        <p className={css.feedbackParagraf}>😢 Bad: {bad}</p>
-      </div>
-      <div className={css.divContainer}>
-        <p className={css.feedbackParagraf}>🤩 Total: {feedbackTotal}</p>
-        <p className={css.feedbackParagraf}>💕 Positive: {feedbackPositive}%</p>
-      </div>
-    </>
+    <div className={css.feedback}>
+      <p className={css.good}>Good: {feedback.good}</p>
+      <p className={css.neutral}>Neutral: {feedback.neutral}</p>
+      <p className={css.bad}>Bad: {feedback.bad}</p>
+      <p className={css.total}>Total: {totalFeedback}</p>
+      <p className={css.positive}>Positive: {positiveFeedback}%</p>
+    </div>
   );
 };
 
 export default Feedback;
-
-// Feedback.protoType = {
-//   feedbackObj: PropTypes.objectOf(PropTypes.number),
-//   feedbackTotal: PropTypes.number,
-//   feedbackPositive: PropTypes.number,
-// };

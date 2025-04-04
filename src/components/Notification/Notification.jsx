@@ -1,7 +1,6 @@
 import css from "./Notification.module.css";
 
-const Notification = () => {
-  return <p className={css.paragraf}>No feedback yet 😿</p>;
+const Notification = ({ message }) => {
+  return <p className={css.notification}>{message}</p>;
 };
-
 export default Notification;

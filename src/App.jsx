@@ -1,63 +1,61 @@
-import Description from "./components/Description/Description";
-import Feedback from "./components/Feedback/Feedback";
-import Notification from "./components/Notification/Notification";
-import Options from "./components/Options/Options";
-import css from "./App.module.css";
-
 import { useState, useEffect } from "react";
+import css from "./App.module.css";
+import Description from "./components/Description/Description.jsx";
+import Feedback from "./components/Feedback/Feedback.jsx";
+import Options from "./components/Options/Options.jsx";
+import Notification from "./components/Notification/Notification.jsx";
 
-function App() {
-  const typeRewiews = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
-
-  // values - obj typeRewiews
-  const [values, setValues] = useState(() => {
-    const savedValues = window.localStorage.getItem("saved-values");
-    if (savedValues !== null) {
-      return JSON.parse(savedValues);
-    }
-    return typeRewiews;
+const App = () => {
+  const [feedback, setFeedback] = useState(() => {
+    const savedFeedback = localStorage.getItem("feedback");
+    return savedFeedback
+      ? JSON.parse(savedFeedback)
+      : { good: 0, neutral: 0, bad: 0 };
   });
 
   useEffect(() => {
-    window.localStorage.setItem("saved-values", JSON.stringify(values));
-  }, [values]);
-
-  const totalFeedback = values.good + values.neutral + values.bad;
-  const positiveFeedback = Math.round(
-    ((values.good + values.neutral) / totalFeedback) * 100
-  );
+    localStorage.setItem("feedback", JSON.stringify(feedback));
+  }, [feedback]);
 
   const updateFeedback = (feedbackType) => {
-    setValues({
-      ...values,
-      [feedbackType]: values[feedbackType] + 1,
-    });
+    setFeedback((prevFeedback) => ({
+      ...prevFeedback,
+      [feedbackType]: prevFeedback[feedbackType] + 1,
+    }));
   };
 
-  const resetFeedbackButton = () => setValues(typeRewiews);
+  const resetFeedback = () => {
+    setFeedback({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
+    localStorage.removeItem("feedback");
+  };
+
+  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+  const positiveFeedback =
+    totalFeedback > 0 ? Math.round((feedback.good / totalFeedback) * 100) : 0;
 
   return (
-    <section className={css.container}>
+    <div className={css.container}>
       <Description />
       <Options
-        onClickFeedback={(feedbackType) => updateFeedback(feedbackType)}
-        resetFeedback={totalFeedback >= 1}
-        resetButton={resetFeedbackButton}
+        updateFeedback={updateFeedback}
+        resetFeedback={resetFeedback}
+        totalFeedback={totalFeedback}
       />
-      {totalFeedback >= 1 && (
+      {totalFeedback > 0 ? (
         <Feedback
-          feedbackObj={values}
-          feedbackTotal={totalFeedback}
-          feedbackPositive={positiveFeedback}
+          feedback={feedback}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
         />
+      ) : (
+        <Notification message="No feedback yet" />
       )}
-      {totalFeedback < 1 && <Notification />}
-    </section>
+    </div>
   );
-}
+};
 
 export default App;
